@@ -6,3 +6,18 @@ printf '1:2:3' | awk -F ":" '{print $1+$2+$3}'
 
 # print a multiplication table
 seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'
+
+# ENDは、すべての行を読み込み完了後、1回だけ実行される特殊なパターン（＝条件）
+ls -l | awk '{sum+=$5; print $5} END{print "--------\n" sum}'　
+
+# 行列の集計。-vオプションは、スクリプト実行前に変数に値を設定する。OFSはawkが用意した組込み変数で、awkが出力する時に、列と列を繋ぐ区切り文字を保存する。
+cat 123.txt | awk -v OFS="\t" '{rt=$1+$2+$3; c1+=$1; c2+=$2; c3+=$3; c4+=rt; print $1,$2,$3,"",rt} END{print ""; print c1,c2,c3,"",c4}'
+
+# $数値、NF、NR、FS、RS、OFS、ORS
+# NF＝処理しているレコードのフィールド数（Number of Fields）
+# NR＝処理しているレコードの先頭からの番号（Number of Record）
+# FS＝入力時にフィールドを区切る文字（Field Separator）
+# RS＝入力時にレコードを区切る文字（Record Separator）
+# OFS＝出力時にフィールドを繋げる文字（Output Field Separator）
+# ORS＝出力時にレコードを繋げる文字（Output Record Separator）
+

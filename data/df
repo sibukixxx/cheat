@@ -1,2 +1,8 @@
 # Printout disk free space in a human readable format
 df -h
+
+# 階層のルートから深さレベルが最大DEPTHまでにある各ディレクトリのディスク容量の合計を表示する
+df -max-depth=DEPTH
+
+# 再帰的に集計する際、PATTERNにマッチする名前のサブディレクトリやファイルを除外する
+-exclude=PATTERN
