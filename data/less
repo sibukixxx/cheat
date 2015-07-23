@@ -1,2 +1,13 @@
 # To disable the terminal refresh when exiting
 less -X
+
+# 監視モード
+less +F
+
+# 複数ファイル監視 「Ctrl-c」で通常モードへ、「:n」で次のファイルへ移動し、「F」で監視モード
+less +F README.md LICENSE
+
+# 監視モード -> 通常モード
+less +F + Ctrl-c
+
+
