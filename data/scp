@@ -6,3 +6,6 @@ scp user@example.com:remote/dir/foo.txt local/dir
 
 # 再帰的に
 scp -r Dir/ remote/dir
+
+# scp で帯域制限 850KB/s で転送したい
+scp -l 7200 source destination
